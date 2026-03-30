@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>El Balcón | Tasca Restaurante - Reservas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>El Balcón | Tasca Restaurante - Reservas Móvil</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -16,9 +16,10 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #F5EFE6;  /* Crema claro fondo */
-            color: #4A2C1A;              /* Marrón oscuro para texto */
+            background-color: #F5EFE6;
+            color: #4A2C1A;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         /* PALETA REAL DEL LOGO */
@@ -34,44 +35,45 @@
         }
 
         .container {
+            width: 100%;
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 0 20px;
         }
 
-        /* HEADER CON LOGO EXACTO (estilo imagen) */
+        /* ========== MOBILE FIRST ========== */
+        /* HEADER responsive */
         header {
             background-color: var(--marron-oscuro);
-            padding: 16px 0;
+            padding: 12px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .navbar {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .logo-imagen {
-            text-align: left;
+            text-align: center;
         }
         .logo-elbalcon {
-            font-size: 2.1rem;
+            font-size: 1.8rem;
             font-weight: 900;
             letter-spacing: 2px;
             color: var(--dorado-calido);
             line-height: 1.1;
             font-family: 'Playfair Display', serif;
             text-transform: uppercase;
-            text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
         }
         .logo-tasca {
-            font-size: 0.8rem;
-            letter-spacing: 3px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
             font-weight: 500;
             color: #F5EFE6;
             font-family: 'Poppins', sans-serif;
@@ -79,200 +81,203 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.2rem;
             list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .nav-links a {
             text-decoration: none;
             color: #F5EFE6;
             font-weight: 600;
             transition: 0.3s;
-            font-size: 1rem;
+            font-size: 0.85rem;
+            padding: 6px 0;
         }
         .nav-links a:hover {
             color: var(--dorado-calido);
-            transform: translateY(-2px);
         }
 
-        /* HERO con paleta */
+        /* HERO móvil */
         .hero {
-            background: linear-gradient(110deg, rgba(74,44,26,0.8) 0%, rgba(122,74,42,0.7) 100%), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format');
+            background: linear-gradient(110deg, rgba(74,44,26,0.85) 0%, rgba(122,74,42,0.8) 100%), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format');
             background-size: cover;
-            background-position: center 40%;
-            min-height: 85vh;
+            background-position: center;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             text-align: center;
+            padding: 40px 0;
         }
         .hero-content {
-            max-width: 750px;
             margin: 0 auto;
-            background: rgba(74, 44, 26, 0.75);
+            background: rgba(74, 44, 26, 0.8);
             backdrop-filter: blur(4px);
-            padding: 2.5rem 2rem;
-            border-radius: 32px;
+            padding: 1.8rem 1.2rem;
+            border-radius: 28px;
             border: 1px solid var(--dorado-calido);
         }
         .hero-content h2 {
-            font-size: 3.3rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: #F5EFE6;
         }
         .hero-content p {
-            font-size: 1.2rem;
-            margin: 1rem 0 1.8rem;
+            font-size: 1rem;
+            margin: 0.8rem 0 1.5rem;
             color: #FEF0E0;
         }
+
+        /* Botones generales */
         .btn {
             display: inline-block;
             background-color: var(--dorado-calido);
             color: var(--marron-oscuro);
-            padding: 12px 32px;
+            padding: 10px 24px;
             border-radius: 50px;
             font-weight: bold;
             text-decoration: none;
             transition: 0.3s;
-            font-size: 1rem;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             border: none;
             cursor: pointer;
+            text-align: center;
         }
         .btn:hover {
             background-color: #e6b060;
             transform: scale(1.02);
-            color: #2E1A0E;
         }
 
+        /* Secciones */
         section {
-            padding: 80px 0;
+            padding: 50px 0;
         }
         .section-title {
             text-align: center;
-            font-size: 2.6rem;
-            margin-bottom: 55px;
+            font-size: 2rem;
+            margin-bottom: 35px;
             color: var(--marron-oscuro);
             font-weight: 700;
             position: relative;
         }
         .section-title:after {
             content: '';
-            width: 80px;
+            width: 60px;
             height: 3px;
             background: var(--dorado-calido);
             display: block;
-            margin: 14px auto 0;
+            margin: 12px auto 0;
             border-radius: 4px;
         }
 
-        /* MENÚ */
+        /* MENÚ - grid responsive móvil */
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
         .menu-card {
             background: white;
-            border-radius: 28px;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-            transition: all 0.35s ease;
-            border-bottom: 4px solid var(--dorado-calido);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-bottom: 3px solid var(--dorado-calido);
         }
         .menu-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 35px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
         }
         .menu-img {
-            height: 200px;
+            height: 180px;
             background-size: cover;
             background-position: center;
         }
         .menu-card h3 {
-            font-size: 1.7rem;
-            margin: 1.2rem 1rem 0.5rem;
+            font-size: 1.4rem;
+            margin: 1rem 1rem 0.3rem;
             font-weight: 700;
             color: var(--marron-oscuro);
         }
         .menu-card p {
-            margin: 0 1rem 0.8rem;
+            margin: 0 1rem 0.6rem;
             color: #7A4A2A;
+            font-size: 0.9rem;
             line-height: 1.4;
         }
         .precio {
             display: block;
-            margin: 0 1rem 1.3rem;
+            margin: 0 1rem 1.2rem;
             font-weight: 800;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--dorado-calido);
         }
 
-        /* HORARIOS */
+        /* HORARIOS móvil */
         .horarios-wrapper {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
+            flex-direction: column;
+            gap: 1rem;
             background: #FFF6ED;
-            border-radius: 60px;
-            padding: 2rem 1.5rem;
+            border-radius: 40px;
+            padding: 1.5rem;
             border: 1px solid var(--dorado-calido);
         }
         .horario-card {
             background: white;
-            padding: 1.6rem 1.8rem;
-            border-radius: 40px;
+            padding: 1.2rem;
+            border-radius: 32px;
             text-align: center;
-            min-width: 190px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.03);
-            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
         .horario-card i {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: var(--dorado-calido);
             margin-bottom: 0.5rem;
         }
         .horario-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: var(--marron-oscuro);
+        }
+        .horario-card p {
+            font-size: 0.9rem;
         }
         .happy-special {
             background: #FEF3E6;
             border: 1px solid var(--dorado-calido);
         }
 
-        /* RESERVA INTEGRADA - Formulario funcional */
+        /* FORMULARIO RESERVA móvil optimizado */
         .reserva-section {
             background: linear-gradient(135deg, #FFF8F0 0%, #F5EFE6 100%);
-            border-radius: 48px;
-            padding: 2.5rem;
-            margin-top: 20px;
-            box-shadow: 0 20px 35px rgba(74,44,26,0.08);
+            border-radius: 32px;
+            padding: 1.5rem;
+            margin-top: 10px;
+            box-shadow: 0 10px 25px rgba(74,44,26,0.08);
             border: 1px solid var(--dorado-calido);
         }
         .form-reserva {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
-            max-width: 700px;
-            margin: 0 auto;
+            gap: 1.2rem;
         }
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
         .form-group label {
             font-weight: 600;
             color: var(--marron-oscuro);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
         .form-group input, .form-group select, .form-group textarea {
-            padding: 14px 18px;
-            border-radius: 40px;
+            padding: 12px 16px;
+            border-radius: 30px;
             border: 1px solid #DCC9B2;
             background: white;
             font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             transition: 0.2s;
         }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
@@ -283,92 +288,134 @@
         .btn-reservar {
             background-color: var(--marron-medio);
             color: white;
-            font-size: 1.1rem;
-            padding: 14px;
+            font-size: 1rem;
+            padding: 12px;
             border: none;
             font-weight: bold;
-            letter-spacing: 1px;
         }
         .btn-reservar:hover {
             background-color: var(--marron-oscuro);
-            transform: scale(1.01);
-        }
-        .mensaje-reserva {
-            text-align: center;
-            margin-top: 20px;
-            font-weight: 500;
-            color: var(--marron-medio);
         }
 
-        /* Contacto y redes */
+        /* CONTACTO Y REDES móvil */
         .contacto-redes {
             display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .contacto-info, .redes-info {
+            background: white;
+            border-radius: 28px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+        }
+        .contacto-info p {
+            margin: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
             flex-wrap: wrap;
-            gap: 2rem;
-        }
-        .contacto-info {
-            flex: 1.2;
-            background: white;
-            border-radius: 32px;
-            padding: 2rem;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.04);
-        }
-        .redes-info {
-            flex: 0.9;
-            background: white;
-            border-radius: 32px;
-            padding: 2rem;
-            text-align: center;
         }
         .contacto-info i, .redes-info i {
             color: var(--dorado-calido);
-            width: 32px;
-            margin-right: 12px;
+            width: 28px;
+            margin-right: 10px;
         }
-        .contacto-info p {
-            margin: 1rem 0;
+        .social-icons {
             display: flex;
-            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
         }
         .social-icons a {
             background: var(--marron-oscuro);
             color: #F5EFE6;
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            font-size: 1.6rem;
-            margin: 0 8px;
+            font-size: 1.4rem;
             transition: 0.2s;
         }
         .social-icons a:hover {
             background: var(--dorado-calido);
             color: var(--marron-oscuro);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         footer {
             background: var(--marron-oscuro);
             color: #F5EFE6;
             text-align: center;
-            padding: 32px 0;
+            padding: 24px 16px;
+            font-size: 0.8rem;
         }
 
-        @media (max-width: 780px) {
+        /* mensaje reserva móvil */
+        .mensaje-reserva {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        /* TABLET y desktop (mejoras para pantallas más grandes) */
+        @media (min-width: 640px) {
             .navbar {
-                flex-direction: column;
-                gap: 12px;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .logo-imagen {
+                text-align: left;
+            }
+            .nav-links {
+                gap: 1.8rem;
+            }
+            .nav-links a {
+                font-size: 1rem;
             }
             .hero-content h2 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
+            }
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.8rem;
+            }
+            .horarios-wrapper {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .horario-card {
+                flex: 1;
+                min-width: 180px;
+            }
+            .contacto-redes {
+                flex-direction: row;
+            }
+            .contacto-info, .redes-info {
+                flex: 1;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 32px;
+            }
+            .menu-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .hero-content h2 {
+                font-size: 3rem;
+            }
+            section {
+                padding: 80px 0;
             }
             .section-title {
-                font-size: 2rem;
-            }
-            .reserva-section {
-                padding: 1.5rem;
+                font-size: 2.5rem;
             }
         }
     </style>
@@ -459,7 +506,7 @@
         </div>
     </section>
 
-    <!-- RESERVA INTEGRADA (Ejemplo funcional) -->
+    <!-- RESERVA INTEGRADA -->
     <section id="reservas">
         <div class="container">
             <h2 class="section-title">Reserva tu experiencia</h2>
@@ -502,7 +549,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label><i class="fas fa-comment"></i> Nota especial (opcional)</label>
+                        <label><i class="fas fa-comment"></i> Nota especial</label>
                         <textarea rows="2" placeholder="Alergias, celebración, terraza..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-reservar"><i class="fas fa-check-circle"></i> Solicitar reserva</button>
@@ -522,7 +569,7 @@
                     <p><i class="fas fa-location-dot"></i> Calle del Balcón 14, Centro, 28013 Madrid</p>
                     <p><i class="fas fa-phone-alt"></i> +34 910 456 789</p>
                     <p><i class="fas fa-envelope"></i> hola@elbalcontasca.com</p>
-                    <p><i class="fas fa-clock"></i> Atención al cliente: 11h - 22h</p>
+                    <p><i class="fas fa-clock"></i> Atención: 11h - 22h</p>
                     <a href="#reservas" class="btn" style="margin-top: 16px; display: inline-block;"><i class="fas fa-calendar-alt"></i> Reserva online</a>
                 </div>
                 <div class="redes-info">
@@ -535,7 +582,7 @@
                     </div>
                     <p><i class="fas fa-tag"></i> #ElBalconTasca #SaborConVista</p>
                     <div style="background: #F5EFE6; border-radius: 40px; padding: 12px; margin-top: 20px;">
-                        <i class="fas fa-wine-bottle"></i> Eventos privados · Catering · Balcón con encanto
+                        <i class="fas fa-wine-bottle"></i> Eventos privados · Catering
                     </div>
                 </div>
             </div>
@@ -544,13 +591,13 @@
 
     <footer>
         <div class="container">
-            <p>© 2025 EL BALCON · TASCA RESTAURANT · Donde cada atardecer se sirve en bandeja</p>
-            <p style="margin-top: 8px;"><i class="fas fa-heart" style="color: var(--dorado-calido);"></i> Hecho con la paleta que enamora: #4A2C1A · #7A4A2A · #D9A15B · #F5EFE6</p>
+            <p>© 2025 EL BALCON · TASCA RESTAURANT</p>
+            <p style="margin-top: 6px;"><i class="fas fa-heart" style="color: var(--dorado-calido);"></i> Donde cada atardecer se sirve en bandeja</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scroll
+        // Smooth scroll móvil
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
@@ -563,7 +610,7 @@
             });
         });
 
-        // LÓGICA DE RESERVA INTEGRADA (simulación realista para cotización)
+        // RESERVA con feedback adaptado a móvil
         const formReserva = document.getElementById('formReserva');
         const mensajeDiv = document.getElementById('mensajeReserva');
 
@@ -576,27 +623,29 @@
             const personas = document.getElementById('personas').value;
 
             if (!nombre || !telefono || !fecha) {
-                mensajeDiv.innerHTML = '⚠️ Por favor, completa nombre, teléfono y fecha.';
+                mensajeDiv.innerHTML = '⚠️ Completa nombre, teléfono y fecha.';
                 mensajeDiv.style.color = '#b85c1a';
                 return;
             }
 
-            // Simulación de envío exitoso - para mostrar al cliente potencial la reserva integrada
-            mensajeDiv.innerHTML = `✨ ¡Gracias ${nombre}! Hemos recibido tu solicitud para ${personas} el día ${fecha} a las ${hora}. En breve recibirás un WhatsApp o llamada al ${telefono} para confirmar. ¡Te esperamos en El Balcón! ✨`;
+            mensajeDiv.innerHTML = `✨ ¡Gracias ${nombre}! Recibimos tu solicitud para ${personas} el ${fecha} a las ${hora}. Te confirmamos por WhatsApp al ${telefono}. ¡Te esperamos! ✨`;
             mensajeDiv.style.color = '#4A2C1A';
             mensajeDiv.style.fontWeight = 'bold';
             mensajeDiv.style.backgroundColor = '#FFF0E0';
             mensajeDiv.style.padding = '12px';
             mensajeDiv.style.borderRadius = '40px';
             
-            // Opcional: limpiar campos si quieres (lo dejamos para demo, pero mostramos el exito)
-            // No reseteamos para que el cliente vea la demo fluida
+            // Limpiar formulario opcional (descomentar si se desea)
+            // document.getElementById('nombre').value = '';
+            // document.getElementById('telefono').value = '';
+            // document.getElementById('fecha').value = '';
+            
             setTimeout(() => {
                 mensajeDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }, 100);
         });
 
-        // Animación menú cards
+        // Animación cards en móvil
         const cards = document.querySelectorAll('.menu-card');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -605,11 +654,11 @@
                     entry.target.style.transform = "translateY(0)";
                 }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.1 });
         cards.forEach(card => {
             card.style.opacity = "0";
-            card.style.transform = "translateY(20px)";
-            card.style.transition = "all 0.5s ease";
+            card.style.transform = "translateY(15px)";
+            card.style.transition = "all 0.4s ease";
             observer.observe(card);
         });
     </script>
