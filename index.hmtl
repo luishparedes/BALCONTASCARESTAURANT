@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>El Balcón | Tasca Restaurante - Reservas</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F5EFE6;  /* Crema claro fondo */
+            color: #4A2C1A;              /* Marrón oscuro para texto */
+            scroll-behavior: smooth;
+        }
+
+        /* PALETA REAL DEL LOGO */
+        :root {
+            --marron-oscuro: #4A2C1A;
+            --marron-medio: #7A4A2A;
+            --dorado-calido: #D9A15B;
+            --crema-claro: #F5EFE6;
+        }
+
+        h1, h2, h3, .logo-principal, .btn, .nav-links a, .precio, .titulo-reserva {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* HEADER CON LOGO EXACTO (estilo imagen) */
+        header {
+            background-color: var(--marron-oscuro);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-imagen {
+            text-align: left;
+        }
+        .logo-elbalcon {
+            font-size: 2.1rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--dorado-calido);
+            line-height: 1.1;
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+        }
+        .logo-tasca {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            font-weight: 500;
+            color: #F5EFE6;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #F5EFE6;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: var(--dorado-calido);
+            transform: translateY(-2px);
+        }
+
+        /* HERO con paleta */
+        .hero {
+            background: linear-gradient(110deg, rgba(74,44,26,0.8) 0%, rgba(122,74,42,0.7) 100%), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format');
+            background-size: cover;
+            background-position: center 40%;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        .hero-content {
+            max-width: 750px;
+            margin: 0 auto;
+            background: rgba(74, 44, 26, 0.75);
+            backdrop-filter: blur(4px);
+            padding: 2.5rem 2rem;
+            border-radius: 32px;
+            border: 1px solid var(--dorado-calido);
+        }
+        .hero-content h2 {
+            font-size: 3.3rem;
+            font-weight: 800;
+            color: #F5EFE6;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin: 1rem 0 1.8rem;
+            color: #FEF0E0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--dorado-calido);
+            color: var(--marron-oscuro);
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #e6b060;
+            transform: scale(1.02);
+            color: #2E1A0E;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.6rem;
+            margin-bottom: 55px;
+            color: var(--marron-oscuro);
+            font-weight: 700;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: var(--dorado-calido);
+            display: block;
+            margin: 14px auto 0;
+            border-radius: 4px;
+        }
+
+        /* MENÚ */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 2rem;
+        }
+        .menu-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.35s ease;
+            border-bottom: 4px solid var(--dorado-calido);
+        }
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px rgba(0,0,0,0.1);
+        }
+        .menu-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        .menu-card h3 {
+            font-size: 1.7rem;
+            margin: 1.2rem 1rem 0.5rem;
+            font-weight: 700;
+            color: var(--marron-oscuro);
+        }
+        .menu-card p {
+            margin: 0 1rem 0.8rem;
+            color: #7A4A2A;
+            line-height: 1.4;
+        }
+        .precio {
+            display: block;
+            margin: 0 1rem 1.3rem;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--dorado-calido);
+        }
+
+        /* HORARIOS */
+        .horarios-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            background: #FFF6ED;
+            border-radius: 60px;
+            padding: 2rem 1.5rem;
+            border: 1px solid var(--dorado-calido);
+        }
+        .horario-card {
+            background: white;
+            padding: 1.6rem 1.8rem;
+            border-radius: 40px;
+            text-align: center;
+            min-width: 190px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.03);
+            transition: all 0.2s;
+        }
+        .horario-card i {
+            font-size: 2.2rem;
+            color: var(--dorado-calido);
+            margin-bottom: 0.5rem;
+        }
+        .horario-card h3 {
+            font-size: 1.4rem;
+            color: var(--marron-oscuro);
+        }
+        .happy-special {
+            background: #FEF3E6;
+            border: 1px solid var(--dorado-calido);
+        }
+
+        /* RESERVA INTEGRADA - Formulario funcional */
+        .reserva-section {
+            background: linear-gradient(135deg, #FFF8F0 0%, #F5EFE6 100%);
+            border-radius: 48px;
+            padding: 2.5rem;
+            margin-top: 20px;
+            box-shadow: 0 20px 35px rgba(74,44,26,0.08);
+            border: 1px solid var(--dorado-calido);
+        }
+        .form-reserva {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group label {
+            font-weight: 600;
+            color: var(--marron-oscuro);
+            font-size: 0.95rem;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 14px 18px;
+            border-radius: 40px;
+            border: 1px solid #DCC9B2;
+            background: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--dorado-calido);
+            box-shadow: 0 0 0 3px rgba(217,161,91,0.2);
+        }
+        .btn-reservar {
+            background-color: var(--marron-medio);
+            color: white;
+            font-size: 1.1rem;
+            padding: 14px;
+            border: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .btn-reservar:hover {
+            background-color: var(--marron-oscuro);
+            transform: scale(1.01);
+        }
+        .mensaje-reserva {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 500;
+            color: var(--marron-medio);
+        }
+
+        /* Contacto y redes */
+        .contacto-redes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .contacto-info {
+            flex: 1.2;
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+        }
+        .redes-info {
+            flex: 0.9;
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            text-align: center;
+        }
+        .contacto-info i, .redes-info i {
+            color: var(--dorado-calido);
+            width: 32px;
+            margin-right: 12px;
+        }
+        .contacto-info p {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+        }
+        .social-icons a {
+            background: var(--marron-oscuro);
+            color: #F5EFE6;
+            width: 52px;
+            height: 52px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.6rem;
+            margin: 0 8px;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            background: var(--dorado-calido);
+            color: var(--marron-oscuro);
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background: var(--marron-oscuro);
+            color: #F5EFE6;
+            text-align: center;
+            padding: 32px 0;
+        }
+
+        @media (max-width: 780px) {
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .reserva-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <div class="logo-imagen">
+                <div class="logo-elbalcon">EL BALCON</div>
+                <div class="logo-tasca">TASCA RESTAURANT</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#menu">MENÚ</a></li>
+                <li><a href="#horarios">HORARIOS</a></li>
+                <li><a href="#reservas">RESERVAS</a></li>
+                <li><a href="#contacto">CONTACTO</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>El balcón con más encanto</h2>
+            <p>Sabores auténticos, atmósfera única y un equipo que te recibe como en casa.</p>
+            <a href="#reservas" class="btn">📅 Reserva tu mesa ahora</a>
+        </div>
+    </section>
+
+    <!-- MENÚ -->
+    <section id="menu">
+        <div class="container">
+            <h2 class="section-title">Nuestra Carta</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1585109649139-3669c8e5c831?q=80&w=2070&auto=format');"></div>
+                    <h3>Croquetas de la Casa</h3>
+                    <p>Jamón ibérico, bechamel sedosa, costra dorada.</p>
+                    <span class="precio">€ 9.50</span>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1565299507177-b0ac66763828?q=80&w=2022&auto=format');"></div>
+                    <h3>Pulpo a la brasa</h3>
+                    <p>Con cachelos, pimentón de la Vera y aceite arbequina.</p>
+                    <span class="precio">€ 16.90</span>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=1974&auto=format');"></div>
+                    <h3>Secreto Ibérico</h3>
+                    <p>Guarnición de verduras asadas y reducción de Pedro Ximénez.</p>
+                    <span class="precio">€ 18.50</span>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=2065&auto=format');"></div>
+                    <h3>Tarta del Balcón</h3>
+                    <p>Queso cremoso con coulis de frutos rojos.</p>
+                    <span class="precio">€ 6.20</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HORARIOS -->
+    <section id="horarios">
+        <div class="container">
+            <h2 class="section-title">Horario de puertas abiertas</h2>
+            <div class="horarios-wrapper">
+                <div class="horario-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Comida</h3>
+                    <p>Mar a Dom<br>13:00 - 16:30</p>
+                </div>
+                <div class="horario-card">
+                    <i class="fas fa-moon"></i>
+                    <h3>Cena</h3>
+                    <p>Jue a Sáb<br>20:00 - 23:30</p>
+                </div>
+                <div class="horario-card happy-special">
+                    <i class="fas fa-glass-cheers"></i>
+                    <h3>✨ Balcón Happy ✨</h3>
+                    <p>Viernes 19h - 20:30h<br>2x1 en vinos</p>
+                </div>
+                <div class="horario-card">
+                    <i class="fas fa-calendar-week"></i>
+                    <h3>Descanso</h3>
+                    <p>Lunes cerrado<br>Martes solo comida</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVA INTEGRADA (Ejemplo funcional) -->
+    <section id="reservas">
+        <div class="container">
+            <h2 class="section-title">Reserva tu experiencia</h2>
+            <div class="reserva-section">
+                <form id="formReserva" class="form-reserva">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Nombre completo</label>
+                        <input type="text" id="nombre" placeholder="María García" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Teléfono</label>
+                        <input type="tel" id="telefono" placeholder="+34 612 345 678" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-calendar-day"></i> Fecha</label>
+                        <input type="date" id="fecha" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-clock"></i> Horario</label>
+                        <select id="hora">
+                            <option value="13:00">13:00</option>
+                            <option value="13:30">13:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:30">14:30</option>
+                            <option value="20:00">20:00</option>
+                            <option value="20:30">20:30</option>
+                            <option value="21:00">21:00</option>
+                            <option value="21:30">21:30</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-users"></i> Comensales</label>
+                        <select id="personas">
+                            <option>1 persona</option>
+                            <option>2 personas</option>
+                            <option>3 personas</option>
+                            <option>4 personas</option>
+                            <option>5 personas</option>
+                            <option>6+ (consultar)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-comment"></i> Nota especial (opcional)</label>
+                        <textarea rows="2" placeholder="Alergias, celebración, terraza..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-reservar"><i class="fas fa-check-circle"></i> Solicitar reserva</button>
+                    <div id="mensajeReserva" class="mensaje-reserva"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO Y REDES SOCIALES -->
+    <section id="contacto">
+        <div class="container">
+            <h2 class="section-title">Dónde encontrarnos</h2>
+            <div class="contacto-redes">
+                <div class="contacto-info">
+                    <h3><i class="fas fa-map-pin"></i> Nuestro rincón</h3>
+                    <p><i class="fas fa-location-dot"></i> Calle del Balcón 14, Centro, 28013 Madrid</p>
+                    <p><i class="fas fa-phone-alt"></i> +34 910 456 789</p>
+                    <p><i class="fas fa-envelope"></i> hola@elbalcontasca.com</p>
+                    <p><i class="fas fa-clock"></i> Atención al cliente: 11h - 22h</p>
+                    <a href="#reservas" class="btn" style="margin-top: 16px; display: inline-block;"><i class="fas fa-calendar-alt"></i> Reserva online</a>
+                </div>
+                <div class="redes-info">
+                    <h3><i class="fas fa-hashtag"></i> Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <p><i class="fas fa-tag"></i> #ElBalconTasca #SaborConVista</p>
+                    <div style="background: #F5EFE6; border-radius: 40px; padding: 12px; margin-top: 20px;">
+                        <i class="fas fa-wine-bottle"></i> Eventos privados · Catering · Balcón con encanto
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 EL BALCON · TASCA RESTAURANT · Donde cada atardecer se sirve en bandeja</p>
+            <p style="margin-top: 8px;"><i class="fas fa-heart" style="color: var(--dorado-calido);"></i> Hecho con la paleta que enamora: #4A2C1A · #7A4A2A · #D9A15B · #F5EFE6</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === "#" || targetId === "") return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // LÓGICA DE RESERVA INTEGRADA (simulación realista para cotización)
+        const formReserva = document.getElementById('formReserva');
+        const mensajeDiv = document.getElementById('mensajeReserva');
+
+        formReserva.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+            const personas = document.getElementById('personas').value;
+
+            if (!nombre || !telefono || !fecha) {
+                mensajeDiv.innerHTML = '⚠️ Por favor, completa nombre, teléfono y fecha.';
+                mensajeDiv.style.color = '#b85c1a';
+                return;
+            }
+
+            // Simulación de envío exitoso - para mostrar al cliente potencial la reserva integrada
+            mensajeDiv.innerHTML = `✨ ¡Gracias ${nombre}! Hemos recibido tu solicitud para ${personas} el día ${fecha} a las ${hora}. En breve recibirás un WhatsApp o llamada al ${telefono} para confirmar. ¡Te esperamos en El Balcón! ✨`;
+            mensajeDiv.style.color = '#4A2C1A';
+            mensajeDiv.style.fontWeight = 'bold';
+            mensajeDiv.style.backgroundColor = '#FFF0E0';
+            mensajeDiv.style.padding = '12px';
+            mensajeDiv.style.borderRadius = '40px';
+            
+            // Opcional: limpiar campos si quieres (lo dejamos para demo, pero mostramos el exito)
+            // No reseteamos para que el cliente vea la demo fluida
+            setTimeout(() => {
+                mensajeDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        });
+
+        // Animación menú cards
+        const cards = document.querySelectorAll('.menu-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.2 });
+        cards.forEach(card => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(20px)";
+            card.style.transition = "all 0.5s ease";
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
